@@ -2,12 +2,15 @@ package com.example.demo;
  
  
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.test.transport.Member;
@@ -25,9 +28,12 @@ public class HelloController {
         return "연습용 문장\n";
     }
     
-    @PostMapping("/api/login")
-    public String login() {
-    	return "hi\n";
+    @PostMapping(value="/api/login", consumes="application/json;")
+    public Member login(@RequestBody HashMap<String, Object> map) {
+    	System.out.println("login동작");
+    	System.out.println(map);
+    	Member member=new Member("chpark","1234","박찬호",28);
+    	return member;
     }
     
     @RequestMapping("list")
