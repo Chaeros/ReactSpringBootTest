@@ -30,9 +30,8 @@ public class HelloController {
     
     @PostMapping(value="/api/login", consumes="application/json;")
     public Member login(@RequestBody HashMap<String, Object> map) {
-    	System.out.println("login동작");
     	System.out.println(map);
-    	Member member=new Member("chpark","1234","박찬호",28);
+    	Member member=new Member("chaeros","1234","채로스",28);
     	return member;
     }
     
@@ -54,5 +53,12 @@ public class HelloController {
 		Member member=new Member("chpark","1234","박찬호",28);
 		
 		return member;
+	}
+	
+	@GetMapping("detail")
+	public String detail() {
+		System.out.println("detail");
+		
+		return "/detail";
 	}
 }
