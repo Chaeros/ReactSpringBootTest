@@ -1,0 +1,17 @@
+package com.test.transport;
+
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/api")
+@RequiredArgsConstructor
+public class MemberController {
+
+    private final MemberService memberService;
+
+    @PostMapping("/login")
+    public MemberResponseDto login(@RequestBody final MemberRequestDto params) {
+        MemberResponseDto entity = memberService.findBy(params);
+        return entity;
+    }
+
+}
